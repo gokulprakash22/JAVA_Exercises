@@ -1,0 +1,31 @@
+Document
+	documentElement - rootElement(node)
+	getElementsByTagName - nodelist
+	createElement(s)-n
+	createAttribute(s)-n
+	createTextNode(s)-n
+Node
+	-nodeName - string
+	-nodeValue - string
+	-nodeType - int (1-element,2-attribute,3-text....)
+	-firstChild - node
+	-lastChild - node
+	-nextSibling - node
+	-previousSibling - node
+	-childNodes - nodelist
+	-getElementsByTagName - nodelist
+	-hasChildNodes - boolean
+	-attributes - namednodemap
+	
+	-appendChild(n) - node
+	-cloneNode(n) - node
+	-insertBefore(n,n)-node
+	-removeNode(n)-node
+NodeList
+	-length - int
+	-item(i) - node
+NamedNodeMap
+	-length - int
+	-getNamedItem()-node
+	-setNamedItem()-node
+	-removeNamedItem()-node

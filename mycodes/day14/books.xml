@@ -1,0 +1,23 @@
+<!DOCTYPE books SYSTEM "books.dtd">
+<books>
+	<book>
+		<id>100</id>
+		<name>java</name>
+		<author>james</author>
+		<author>siera</author>
+	</book>
+	<book>
+		<id>100</id>
+		<name>xml</name>
+		<author>jason</author>
+		<prize>250</prize>
+		<imported/>
+	</book>
+</books>
+<!--
+	multiplicity level
+	+ - 1 or many
+	* - 0 or many
+	? - 0 or 1
+	  - 1 or 1
+ -->
