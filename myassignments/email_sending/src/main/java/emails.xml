@@ -1,0 +1,13 @@
+<!DOCTYPE emails SYSTEM "emails.dtd">
+<emails>
+	<email>
+		<to>vishaalfeb2000@gmail.com</to>
+		<subject>Email Testing</subject>
+		<message>Hello this a test mail</message>
+	</email>
+	<email>
+		<to>saivishaal1920@gmail.com</to>
+		<subject>Testing Email</subject>
+		<message>Hi this a test mail</message>
+	</email>
+</emails>
