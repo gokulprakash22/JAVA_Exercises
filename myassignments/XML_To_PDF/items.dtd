@@ -1,7 +1,0 @@
-<!ELEMENT items (item+)>
-<!ELEMENT item (sno,itemname,price,quantity,amount)>
-<!ELEMENT sno (#PCDATA)>
-<!ELEMENT itemname (#PCDATA)>
-<!ELEMENT price (#PCDATA)>
-<!ELEMENT quantity (#PCDATA)>
-<!ELEMENT amount (#PCDATA)>
