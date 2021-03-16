@@ -28,7 +28,7 @@ public class App {
 			dbf.setIgnoringElementContentWhitespace(true);
 			dbf.setValidating(true);
 	        DocumentBuilder db=dbf.newDocumentBuilder();
-			Document doc=db.parse("C:\\Java\\java_training\\email_sending\\src\\main\\java\\emails.xml");
+			Document doc=db.parse("emails.xml");
 	        Element rootElement=doc.getDocumentElement();
 			for(int i=0;i<rootElement.getChildNodes().getLength();i++) {
 				 ar.add(new ArrayList<String>()); 
@@ -41,7 +41,7 @@ public class App {
 		String message = "";
 		String subject = "";
 		String to = "";
-		String from = "saiprasaad1999@gmail.com";
+		String from = "gokulprakash22@gmail.com";
 		for(int i=0;i<ar.size();i++)
 		{
 			to=ar.get(i).get(0);
@@ -62,7 +62,7 @@ public class App {
 		Session session=Session.getInstance(properties, new Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {				
-				return new PasswordAuthentication("saiprasaad1999@gmail.com", "password");
+				return new PasswordAuthentication("gokulprakash22@gmail.com", "password");
 			}
 		});
 		session.setDebug(true);
