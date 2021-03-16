@@ -1,0 +1,17 @@
+<!DOCTYPE items SYSTEM "items.dtd">
+<items>
+	<item>
+		<sno>1</sno>
+		<itemname>DairyMilk</itemname>
+		<price>50</price>
+		<quantity>3</quantity>
+		<amount>150</amount>
+	</item>
+	<item>
+		<sno>2</sno>
+		<itemname>Pringles Chips</itemname>
+		<price>100</price>
+		<quantity>2</quantity>
+		<amount>200</amount>
+	</item>
+</items>
