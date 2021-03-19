@@ -1,0 +1,22 @@
+<html>
+	<body>
+		<script>
+		var str="India won the world cup for the 100th time..........................";
+		var x=0;
+		var d=new Date();
+		alert(d);
+		function scroll(){			
+				var s=str.substring(0,x);
+				status=s;
+				x++;
+				if(x==str.length){
+					x=0;	
+					}		
+			window.setTimeout("scroll();",100);
+		}
+		scroll();
+		//window.setInterval("scroll();",100);
+		//window.setTimeout("scroll();",100);
+		</script>
+	</body>
+</html>
