@@ -1,0 +1,60 @@
+<html>
+	<body>
+		<script>
+			function Corporation() {
+				this.doIssueCertificate = function() {
+					return "Collect death certificate......";
+				}
+			}
+			
+			function Hospital() {
+				this.doPostmortem = function() {
+					return "Doing Postmortem........";
+				}
+			}
+			
+			function Police() {
+				this.doInvestigation = function(){
+					return 'police doing investigation';
+				} 
+			}
+			
+			function Command() {
+				this.execute = function() {
+					return "Dummy command";
+				}
+			}
+			
+			function DeathCertificateCommand(hospital, police, corporation) {
+				var str="";
+				this.execute = function() {
+					str = str+hospital.doPostmortem();
+					str = str+police.doInvestigation();
+					str = str+corporation.doIssueCertificate();
+					return str;
+				}
+			}
+			
+			DeathCertificateCommand.prototype = new Command();
+			var commands = [];
+			var seva = ( function sevaCenter() {
+				function init() {
+					for(var i=0; i<5; i++) {
+						commands[i] = new Command();
+					}
+					
+					commands[1] = new DeathCertificateCommand(new Hospital(), new Police(), new Corporation());
+				}
+				
+				return {
+					getSeva: function() {
+						init();
+					}
+				}
+			})();
+
+			seva.getSeva();
+			console.log(commands[1].execute());
+		</script>
+	</body>
+</html>
