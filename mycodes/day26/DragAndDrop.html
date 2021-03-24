@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			function drag(e) {
+				e.dataTransfer.setData("draggedItem", e.target.id);
+			}
+
+			function drop(e) {
+				e.preventDefault();
+				var obj = e.dataTransfer.getData("draggedItem");
+				e.target.appendChild(document.getElementById(obj));
+			}
+			
+			function allowDrop(e) {
+				e.preventDefault();
+			}
+		</script>
+		<style>
+			#target {width:300px; height:200px; padding:20px; border:2px solid black;}
+		</style>
+	</head>
+	<body>
+		<div id="target" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+		<img id="source" src="image.jpg" draggable="true" ondragstart="drag(event)"/>
+	</body>
+</html>
