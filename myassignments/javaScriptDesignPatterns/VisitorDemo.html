@@ -1,0 +1,97 @@
+<html>
+	<body>
+		<script>
+			function Handler911() {
+				this.handle1 = function(dbe) {
+					console.log("Dog bitten... take to hospital");				
+				};
+				
+				this.handle2 = function(dbe) {
+					console.log("Dog is running... ");				
+				};
+				
+				this.handle3 = function(dbe) {
+					console.log("Dog is happy... let us play");				
+				}
+			}
+			
+			function Child() {
+				this.playWithDog = function(item, dog) {
+					try {
+						dog.play(item);
+					} catch(e) {
+						e.visit();
+					}
+				}
+			}
+			
+			var child = new Child();
+			child.playWithDog(new Biscuit(), new Dog());
+			
+			function DogExceptions() {
+				this.visit = function(){};
+			}
+			
+			function DogBiteException() {
+				this.visit = function() {
+					new Handler911().handle1(this);
+				};
+			}
+			
+			function DogBarkException() {
+				this.visit = function() {
+					new Handler911().handle2(this);
+				};
+			}
+			
+			function DogHappyException() {
+				this.visit = function() {
+					new Handler911().handle3(this);
+				};
+			}
+			var de = new DogExceptions();
+			DogBarkException.prototype = de;
+			DogBarkException.prototype.constructor = DogBarkException;
+			DogBiteException.prototype = de;
+			DogBiteException.prototype.constructor = DogBiteException;
+			DogHappyException.prototype = de;
+			DogHappyException.prototype.constructor = DogHappyException;
+			
+			function Dog() {
+				this.play = function(item) {
+					item.execute();
+				}
+			}
+			
+			function Item() {
+				this.execute = function() {}
+			}
+			
+			function Stone() {
+				this.execute = function() {
+					throw new DogBiteException();
+				}
+			}
+			
+			function Stick() {
+				this.execute = function() {
+					throw new DogBarkException();
+				}
+			}
+			
+			function Biscuit() {
+				this.execute = function() {
+					throw new DogHappyException();
+				}
+			}
+			var item = new Item();
+			Stone.prototype = item;
+			Stone.prototype.constructor = Stone;
+			
+			Stick.prototype = item;
+			Stick.prototype.constructor = Stick;
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,79 @@
+<html>
+	<head>
+		<script>
+			var config = {
+				bean: {
+					name: 'shoeShop',
+					classname: 'batashop',
+					prop: {
+						name: 'shoefactory',
+						classname: 'batashoefactory'
+					}
+				}
+			};
+			
+			var appcontext = (function(name) {
+				function init() {
+					return {
+						getBean: function() {
+							var shop = config.bean.classname;
+							console.log(shop);
+							var factory = config.bean.prop.classname;
+							var shoeShop = new window[shop]();
+							var shoefactory = new window[factory]();
+							shoeShop.setShoeFactory(shoefactory);
+							return shoeShop;
+						}
+					}
+				}
+				
+				return {
+					load:function() {
+						return init();
+					}
+				}
+			})();
+			
+			var shoe = {name: 'shoe'};
+			
+			function shoefactory() {
+				this.makeShoe = function() {
+					console.log('make shoe called');
+					return shoe;
+				}
+			}
+			
+			function batashoefactory() {
+				this.makeShoe = function() {
+					console.log("make shoe of batashoefactory called");
+					return shoe;
+				}
+			}
+			
+			batashoefactory.prototype = new shoefactory();
+			
+			function shoeShop() {
+				this.shoefactory = "";
+				this.setShoeFactory=function(shoefactory) {
+					this.shoefactory = shoefactory;
+				}
+				this.getShoeFactory=function() {
+					return this.shoefactory;
+				}
+			}
+			
+			function batashop() {
+				this.sellShoe = function() {
+					console.log("sell shoe called");
+					return this.getShoeFactory().makeShoe();
+				}
+			}
+			
+			batashop.prototype = new shoeShop();
+			
+			var demo = appcontext.load().getBean();
+			var buyshoe = demo.sellShoe();
+		</script>
+	</head>
+
+</html>

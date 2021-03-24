@@ -1,0 +1,61 @@
+<html>
+	<body>
+		<script>
+			function Paint() {
+				this.getColor = function() {
+					return "The color is..."+this.color;
+				}
+			}
+			
+			function RedPaint() {
+				this.color = "red";
+			}
+			
+			function BluePaint() {
+				this.color = "blue";
+			}
+			
+			RedPaint.prototype = new Paint();
+			BluePaint.prototype = new Paint();
+			
+			function PaintBrush(brush) {
+				var brush;
+				this.brush = brush;
+				this.doPainting = function() {
+					return this.brush.getColor();
+				}
+				this.setPaint = function(paint) {
+					this.brush = paint;
+				}
+			}
+			
+			var pb = new PaintBrush();
+			pb.setPaint(new RedPaint());
+			console.log(pb.doPainting());
+			
+			var json = {
+				brush: 'PaintBrush',
+				paint: 'BluePaint'
+			}
+			
+			var springjs = (function() {
+				var pb;
+				init = function() {
+					pb = new window[json.brush]();
+					var paint = new window[json.paint]();
+					pb.setPaint(paint);
+				}
+				return {
+					getBean: function() {
+						init();
+						return pb;
+					}
+				}
+			})();
+
+			var pb = springjs.getBean('brush');
+			console.log(pb.doPainting());
+			
+		</script>
+	</body>
+</html>

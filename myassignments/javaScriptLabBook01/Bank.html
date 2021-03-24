@@ -1,0 +1,39 @@
+<script>
+class bankaccount{
+    assigninitialvalues(name,accno,type,balance){
+        this.name=name;
+        this.accno=accno;
+        this.type=type;
+        this.balance=balance;
+        document.write("Initial values assigned");
+    }
+    deposit(amount){
+        this.balance+=amount;
+        document.write("The balance after deposit is "+this.balance);
+    }
+    withdraw(amount){
+        if(this.balance<amount){
+            document.write("Account balance insufficient");
+        }
+        else{
+            this.balance-=amount;
+            document.write("The balance after withdrawl is "+this.balance);
+        }
+    }
+    display(){
+        document.write("Name : "+this.name+"<br>"+"Balance : "+this.balance);
+    }
+}
+let obj = new bankaccount();
+obj.assigninitialvalues("Gokul",3210,"Saving",1000);
+document.write("<br>");
+obj.display();
+document.write("<br>");
+obj.deposit(100);
+document.write("<br>");
+obj.withdraw(100);
+document.write("<br>");
+obj.withdraw(1100);
+document.write("<br>");
+obj.display();
+</script>

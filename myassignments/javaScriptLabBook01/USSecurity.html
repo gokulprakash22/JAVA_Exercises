@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<script>
+		function search(){
+		  this.dict={
+		    '907':'Alaska',
+		    '209':'California'
+			}  
+		    var val=document.inputform.uscode.value;
+		    var ansval=this.dict[val];
+		    document.inputform.ans.value=ansval;
+		}  
+	</script>
+	<form name="inputform">
+	 <label>Enter the first three digits of a U.S. Social Security number </label>
+	    <input type="number" name="uscode">  <br>
+	    <button type="button" onclick="search()">Search</button><br>
+	    <label>State of the code </label><input type="text" name="ans" />
+	</form>
+</html>

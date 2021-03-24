@@ -1,0 +1,44 @@
+<html>
+	<body>
+		<script>
+			function Shoe() {
+				this.name = 'shoe';
+			}
+			
+			function ShoeFactory() {
+				this.makeShoe = function() {
+					return new Shoe();
+				}
+			}
+			
+			function BataShoeFactory() {
+	
+			}
+			
+			BataShoeFactory.prototype = new ShoeFactory();
+			
+			function ShoeShop() {
+				var shoeFactory;
+				this.setShoeFactory = function(shoeFactory) {
+					this.shoeFactory = shoeFactory;
+				}
+				
+				this.getShoeFactory = function() {
+					return this.shoeFactory;
+				}
+			}
+			
+			function RamuShoeShop() {
+				this.sellShoe = function() {
+					return this.shoeFactory.makeShoe();
+				}
+			}
+			RamuShoeShop.prototype = new ShoeShop();
+			var shop = new RamuShoeShop();
+			shop.setShoeFactory(new BataShoeFactory());
+
+			console.log(shop.sellShoe().name);
+			console.log(shop.getShoeFactory());
+		</script>
+	</body>
+</html>

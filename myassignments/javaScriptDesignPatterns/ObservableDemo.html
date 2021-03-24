@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+		</script>
+		
+		<script>
+			function observable() {
+				var myobs = [];
+				var i = 0;
+				this.addObserver = function(obs) {
+					myobs[i] = obs;
+					++i;
+				}
+				
+				this.notifyObserver = function() {
+					for(var i in myobs) {
+						myobs[i].update();
+					}
+				}
+			}
+			
+			function observer() {
+				var d;
+				this.acceptDiv = function(d) {
+					this.d = d;
+					console.log("Div accepted and registered..");
+				}
+
+				this.update = function() {
+					this.d=$("#div1");
+					console.log(d);
+					this.d.fadeOut(2000);
+					this.d.fadeIn();
+				}
+			}
+			
+			function action() {
+				var firealarm = new observable();
+				var students = new observer();
+				firealarm.addObserver(students);
+				firealarm.notifyObserver();
+			}
+			
+			$(document).ready(function() {
+				$("#div1").click(function(){
+					new observer().acceptDiv($("#div1"));
+					new action();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<p id="p1">Enter this paragraph</p>
+		<div id="div1" style="width:180px; height:180px; background-color:yellow">
+		</div><br>
+	</body>
+</html>

@@ -1,0 +1,18 @@
+<script>
+var counter = 0;
+// call Update function in 2 seconds after first load
+ID=window.setTimeout("Update();",2000);
+function Update()
+	{
+		counter++;
+		window.status="The counter is now at "+counter;
+	document.form1.input1.value="The counter is now at "+counter;
+		//set another timeout for the next count
+		ID=window.setTimeout("Update();",2000);
+	}
+</script>
+<FORM NAME="form1">
+<INPUT TYPE="text" NAME="input1" SIZE="40"><BR>
+<INPUT TYPE="button" VALUE="RESET" onClick="counter=0;"><BR>
+<INPUT TYPE="button" VALUE="STOP" onClick="window.clearTimeout(ID);">
+	</FORM>
