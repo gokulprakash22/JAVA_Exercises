@@ -1,4 +1,0 @@
-<!ELEMENT numbers (number+)>
-<!ELEMENT number (to,message)>
-<!ELEMENT to (#PCDATA)>
-<!ELEMENT message (#PCDATA)>
