@@ -1,8 +1,0 @@
-<!DOCTYPE emails SYSTEM "emails.dtd">
-<emails>
-	<email>
-		<to>rprapagar@gmail.com</to>
-		<subject>This is subject</subject>
-		<message>Hii, How r u??</message>
-	</email>
-</emails>
