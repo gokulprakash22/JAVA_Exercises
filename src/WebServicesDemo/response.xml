@@ -1,0 +1,1 @@
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"><SOAP-ENV:Header/><S:Body><ns2:sayHelloResponse xmlns:ns2="http://basicpack2/"><return><age>10</age><name>Ramu</name></return></ns2:sayHelloResponse></S:Body></S:Envelope>
