@@ -1,0 +1,85 @@
+<html>
+	<body>
+		 <script>
+			 //galaxy object usage
+			 var person=new Object();
+			 person.name="nobitha";
+			 person.getName=function(){return this.name};
+			 console.log(person.getName());
+			 
+			 //literal construtor
+			 var person2={
+				 name:'nobitha2222',
+				 getName:function(){
+				 	return this.name;
+			 	 }
+			 }
+			 console.log(person2.getName());
+			 
+			 //factory function
+			 var person3=function(name,age){
+				 var personObj=new Object();
+				 personObj.name=name;personObj.age=age;
+				 personObj.getName=function(){return this.name+"and the age is..:"+this.age;};
+				 return personObj;
+			 }
+			 var p3=new person3("jian...",10);
+			 console.log(p3.getName());
+			 
+			 //factory function without galaxy object....
+			 var person4=function(name,age){
+				 this.name=name;this.age=age;
+				 this.getName=function(){return this.name+" and the age is..:"+this.age;};
+			 }
+			 var p4=new person4("jian.4444444444..",10);
+			 console.log(p4.getName()); 
+			 
+			 //function constructor
+			 function Person5(name){
+				 this.name=name;
+				 this.getName=function(){
+				 	return this.name;
+				 }
+				 this.display=display;
+			 }
+			 function display(){
+			 	return this.name;
+			 }
+			 var p5=new Person5("ramu");
+			 console.log(p5.getName());
+			 console.log(p5.display());
+			
+			 //deep copy
+			 var p5copy=new p5.constructor("ramudeepcopy");
+			 console.log(p5copy.display());
+			 
+			 //adding properties after creation
+			 Person5.prototype.setName=function(name){
+			 	this.name=name;
+			 }
+			 var p55=new Person5("default ramu");
+			 console.log(p55.display());
+			 p55.setName("new name somu....");
+			 console.log(p55.display());
+			 
+			 //inheritance
+			 function Parent(){
+				 this.getName=function(){
+				 	return this.name;
+				 }
+			 }
+			 function Child(name){
+			 	this.name=name;
+			 }
+			 Child.prototype=new Parent();//inheritance line 1
+			 Child.prototype.constructor=Child;//inheritance line 2
+			 console.log(Child.prototype.constructor);
+			 
+			 //deep copy of inherited obj
+			 var c=new Child("child ramu");
+			 console.log("child name...:"+c.getName());
+			 var dpchild=new c.constructor("dopy copy ramu");
+			 console.log(dpchild.getName());
+		 </script>
+	</body>
+</html>

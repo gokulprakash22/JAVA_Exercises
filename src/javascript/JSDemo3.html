@@ -1,0 +1,17 @@
+<html>
+	<body>
+		<script>
+		function display(){
+			alert(this.name);
+		}
+		function Person(){
+			this.name="ramu";
+			this.display=display;
+		}
+		
+		var obj=new Person();
+		//var obj=new window['Person'](); - Dynamic object creation
+		obj.display();
+		</script>
+	</body>
+</html>

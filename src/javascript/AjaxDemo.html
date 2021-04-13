@@ -1,0 +1,29 @@
+<html>
+<!-- This should be run in apache server(XAMPP) -->
+	<body>
+		<script>
+				var ajaxObj=new XMLHttpRequest();
+				function makeAjaxCall(url){
+					alert("hello");
+					var target=document.getElementById("targetDiv");
+					ajaxObj.open("GET",url);
+						ajaxObj.onreadystatechange=function(){
+							if(ajaxObj.readyState==4 && ajaxObj.status==200){
+								var response=ajaxObj.responseText;
+								target.innerHTML=response;
+							}
+						}
+					ajaxObj.send(null);//where u make the actual request...
+				}
+		
+		</script>
+	
+	<form>
+		<input type="button" onClick="makeAjaxCall('http://localhost:80/data.txt')" value="MakeAjaxCall"></input>
+	</form>
+	
+	<div id="targetDiv">
+		This is the place where the data procured from the server will get displayed....
+	</div>
+	</body>
+</html>
