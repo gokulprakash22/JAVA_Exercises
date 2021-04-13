@@ -1,0 +1,22 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="inheritancedemo.ShoeFactory" table="shoetable1" discriminator-value="SF">
+        <id name="sid" type="int" unsaved-value="0">
+            <generator class="hilo"/>
+        </id>
+        <discriminator column="FACTORYTYPE" type="string"/>
+        
+        <property name="name" />
+        
+	  <subclass name="inheritancedemo.BataShoeFactory" discriminator-value="BSF">
+      	<property name="bataName" type="string"/>      	
+      </subclass>
+      
+      <subclass name="inheritancedemo.LakhaniShoeFactory" discriminator-value="LSF">
+      		<property name="lakhaniName" type="string"/>
+      </subclass>     	        
+	</class>
+
+</hibernate-mapping>
