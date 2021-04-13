@@ -1,0 +1,17 @@
+<!DOCTYPE items SYSTEM "items.dtd">
+<items>
+	<item>
+		<sno>01</sno>
+		<itemname>Tomato</itemname>
+		<price>100</price>
+		<quantity>3kg</quantity>
+		<amount>300</amount>
+	</item>
+	<item>
+		<sno>02</sno>
+		<itemname>Onion</itemname>
+		<price>200</price>
+		<quantity>2kg</quantity>
+		<amount>400</amount>
+	</item>
+</items>
