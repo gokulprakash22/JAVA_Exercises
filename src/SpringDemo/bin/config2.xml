@@ -1,0 +1,52 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:tx="http://www.springframework.org/schema/tx"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.0.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+<bean id="pointcutadvisor1" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+	<property name="mappedName"><value>sell*</value></property>
+	<property name="advice"><ref bean="wadvice"/></property>
+</bean>
+
+<bean id="pointcutadvisor2" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+	<property name="mappedName"><value>sell*</value></property>
+	<property name="advice"><ref bean="eadvice"/></property>
+</bean>
+
+<bean id="pointcutadvisor3" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+	<property name="mappedName"><value>sell*</value></property>
+	<property name="advice"><ref bean="aroundadvice"/></property>
+</bean>
+
+<bean id="pointcutadvisor4" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+	<property name="mappedName"><value>sell*</value></property>
+	<property name="advice"><ref bean="endadvice"/></property>
+</bean>
+
+<bean id="exportImpl" class="spring.ExportImpl"/>
+<bean id="exportAdvice" class="org.springframework.aop.support.DefaultIntroductionAdvisor">
+	<constructor-arg>
+		<ref bean="exportImpl"/>
+	</constructor-arg>
+</bean>
+
+<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+	<property name="driverClassName" value="${driver}"></property>
+	<property name="url" value="${url}"></property>
+	<property name="username" value="${username}"></property>
+	<property name="password" value="${password}"></property>
+</bean>
+<context:property-placeholder location="dbconfig.properties"/>
+
+<bean id="dao" class="spring.DBDAO">
+	<property name="dataSource">
+		<ref bean="dataSource"/>
+	</property>
+</bean>
+</beans>
